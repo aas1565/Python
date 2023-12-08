@@ -1,0 +1,25 @@
+#потратил 6 часов на изучение данной темы. Выполнить задачи не получилось. не понял следующее:
+# как открыть файл с расширение .sqlite и зачем он вообще нужен если есть .db
+# как добавить таблицу к открытой базе данных в пайчарме (работал тут)
+# почему не работает кнопка создания новой таблицы
+# где именно писать код для создания новых таблиц
+#
+
+
+import sqlite3
+
+con = sqlite3.connect("sqlite_test.db")
+cur = con.cursor()
+
+with con:
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS authors (
+            id INT NOT NULL PRIMARY KEY,
+            name TEXT
+        );
+    """)
+    cur.execute("""
+        insert into authors(name)
+        select distinct cast from netflix_titles;
+    """)
+
